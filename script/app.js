@@ -63,9 +63,11 @@ function init() {
     clearInterval(id)
     id = setInterval(() => {
       removePac(currentPositon)
-      currentPositon++
+      if (currentPositon % width !== width - 1) {
+        currentPositon++
+      }
       addPac(currentPositon)
-    }, 200);
+    }, 200)
   }
 
   //* Move pac left
@@ -73,7 +75,9 @@ function init() {
     clearInterval(id)
     id = setInterval(() => {
       removePac(currentPositon)
-      currentPositon--
+      if (currentPositon % width !== 0) {
+        currentPositon--
+      }
       addPac(currentPositon)
     }, 200);
   }
@@ -83,7 +87,9 @@ function init() {
     clearInterval(id)
     id = setInterval(() => {
       removePac(currentPositon)
-      currentPositon -= width
+      if (currentPositon >= width) {
+        currentPositon -= width
+      }
       addPac(currentPositon)
     }, 200);
   }
@@ -93,7 +99,9 @@ function init() {
     clearInterval(id)
     id = setInterval(() => {
       removePac(currentPositon)
-      currentPositon += width
+      if (currentPositon + width <= width * width - 1) {
+        currentPositon += width
+      }
       addPac(currentPositon)
     }, 200);
   }
@@ -128,7 +136,7 @@ function init() {
 
 
 
-  
+
 
 
 
