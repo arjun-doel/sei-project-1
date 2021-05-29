@@ -11,7 +11,7 @@ function init() {
   //* Pac-Man Properties
   const startPosition = 0
   let currentPositon = 0
-  const pacClass = 'yellow'
+  const pacClass = 'pacman-left'
   const blockClass = 'blue'
 
   //* Movement Control Properties
@@ -157,3 +157,4 @@ function init() {
 }
 
 window.addEventListener('DOMContentLoaded', init)
+
