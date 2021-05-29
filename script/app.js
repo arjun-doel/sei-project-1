@@ -39,7 +39,7 @@ function init() {
 
 
   //* Spawn Blocks
-  function addBlock (position) {
+  function addBlock(position) {
     cells[position].classList.add(blockClass)
   }
 
@@ -55,31 +55,29 @@ function init() {
 
   //! PAC MAN Movement
 
-  //* Move pac right
-  function pacRight(){
-    removePac(currentPositon)
-    currentPositon++
-    addPac(currentPositon)
-  }
+  // //* Move pac right
+
+  let id;
 
   //* Move pac right
-  function pacRight(){
-    clearInterval(pacLeft)
-    setInterval(() => {
+  function pacRight() {
+    clearInterval(id)
+    id = setInterval(() => {
       removePac(currentPositon)
       currentPositon++
       addPac(currentPositon)
     }, 200);
   }
-  
-  function pacLeft(){
-    clearInterval(pacRight)
-    setInterval(() => {
+
+
+  function pacLeft() {
+    clearInterval(id)
+    id = setInterval(() => {
       removePac(currentPositon)
       currentPositon--
       addPac(currentPositon)
     }, 200);
-    
+
   }
 
   //* Move PacMan
@@ -90,16 +88,16 @@ function init() {
       // currentPositon++
       // const right = setInterval(pacRight, 200)
       pacRight()
-    } else if (keyPress === left && currentPositon % width !== 0){
+    } else if (keyPress === left && currentPositon % width !== 0) {
       // currentPositon--
       // clearInterval(right)
       // setInterval(pacLeft, 200)
       pacLeft()
-    } else if (keyPress === up && currentPositon >= width){
+    } else if (keyPress === up && currentPositon >= width) {
       currentPositon -= width
-    } else if (keyPress === down && currentPositon + width <= width * width - 1){
+    } else if (keyPress === down && currentPositon + width <= width * width - 1) {
       currentPositon += width
-    } else  {
+    } else {
       console.log('Wrong Key!');
     }
 
@@ -112,7 +110,7 @@ function init() {
     addPac(currentPositon)
     // const gridDiv = grid[Math.floor(Math.random() * grid.length)]
     // gridDiv.classList.add('mole')
-    currentPositon ++
+    currentPositon++
     removePac(currentPositon)
 
   }
