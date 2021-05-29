@@ -9,6 +9,7 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
+  background-color: #242333;
 }
 
 .grid {
@@ -28,13 +29,14 @@ body {
 }
 
 .yellow {
-  background-image: url('../img/placeholder/1200px-Pac_Man.svg.png');
+  /* background-image: url('../img/placeholder/1200px-Pac_Man.svg.png'); */
   background-image: url('../img/placeholder/ZF6W.gif');
   /* background-color: yellow; */
   background-size: contain;
   background-repeat: no-repeat;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 .blue {
