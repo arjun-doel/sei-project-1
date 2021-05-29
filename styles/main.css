@@ -13,6 +13,7 @@ body {
 }
 
 .grid {
+  margin-top: 30px;
   align-items: center;
   display: flex;
   flex-wrap: wrap;
@@ -29,7 +30,7 @@ body {
 }
 
 .pacman-left {
-  background-image: url('../img/placeholder/Pacman-right.gif');
+  background-image: url('../img/placeholder/Pacman-left.gif');
   background-size: contain;
   background-repeat: no-repeat;
   align-items: center;
@@ -38,6 +39,20 @@ body {
 
 .pacman-right {
   background-image: url('../img/placeholder/Pacman-right.gif');
+  background-size: contain;
+  background-repeat: no-repeat;
+  align-items: center;
+  justify-content: center;
+}
+.pacman-up {
+  background-image: url('../img/placeholder/Pacman-up.gif');
+  background-size: contain;
+  background-repeat: no-repeat;
+  align-items: center;
+  justify-content: center;
+}
+.pacman-down {
+  background-image: url('../img/placeholder/Pacman-down.gif');
   background-size: contain;
   background-repeat: no-repeat;
   align-items: center;

@@ -11,7 +11,10 @@ function init() {
   //* Pac-Man Properties
   const startPosition = 0
   let currentPositon = 0
-  const pacClass = 'pacman-left'
+  const pacRotLeft = 'pacman-left'
+  const pacRotRight = 'pacman-right'
+  const pacRotUp = 'pacman-up'
+  const pacRotDown = 'pacman-down'
   const blockClass = 'blue'
 
   //* Movement Control Properties
@@ -31,7 +34,7 @@ function init() {
       cells.push(cell)
     }
     //? Spawn Pacman @ start
-    addPac(startPosition)
+    addPac(startPosition, pacRotRight)
 
     //? Spawn Block
     addBlock(3)
@@ -45,12 +48,12 @@ function init() {
 
   //* Spawn Pac
   function addPac(position) {
-    cells[position].classList.add(pacClass)
+    cells[position].classList.add(pacRotLeft)
   }
 
   //* Remove Pac position
   function removePac(position) {
-    cells[position].classList.remove(pacClass)
+    cells[position].classList.remove(pacRotLeft)
   }
 
   //! PAC MAN Movement
@@ -67,7 +70,7 @@ function init() {
         currentPositon++
       }
       addPac(currentPositon)
-    }, 200)
+    }, 150)
   }
 
   //* Move pac left
@@ -79,7 +82,7 @@ function init() {
         currentPositon--
       }
       addPac(currentPositon)
-    }, 200);
+    }, 150);
   }
 
   //* Move pac up
@@ -91,7 +94,7 @@ function init() {
         currentPositon -= width
       }
       addPac(currentPositon)
-    }, 200);
+    }, 150);
   }
 
   //* Move pac down
@@ -103,7 +106,7 @@ function init() {
         currentPositon += width
       }
       addPac(currentPositon)
-    }, 200);
+    }, 150);
   }
 
 
