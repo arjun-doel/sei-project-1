@@ -55,8 +55,7 @@ function init() {
 
   //! PAC MAN Movement
 
-  // //* Move pac right
-
+  //* Time ID to cancel and start intervals
   let id;
 
   //* Move pac right
@@ -69,7 +68,7 @@ function init() {
     }, 200);
   }
 
-
+  //* Move pac left
   function pacLeft() {
     clearInterval(id)
     id = setInterval(() => {
@@ -77,8 +76,28 @@ function init() {
       currentPositon--
       addPac(currentPositon)
     }, 200);
-
   }
+
+  //* Move pac up
+  function pacUp() {
+    clearInterval(id)
+    id = setInterval(() => {
+      removePac(currentPositon)
+      currentPositon -= width
+      addPac(currentPositon)
+    }, 200);
+  }
+
+  //* Move pac down
+  function pacDown() {
+    clearInterval(id)
+    id = setInterval(() => {
+      removePac(currentPositon)
+      currentPositon += width
+      addPac(currentPositon)
+    }, 200);
+  }
+
 
   //* Move PacMan
   function movement(e) {
@@ -94,9 +113,11 @@ function init() {
       // setInterval(pacLeft, 200)
       pacLeft()
     } else if (keyPress === up && currentPositon >= width) {
-      currentPositon -= width
+      // currentPositon -= width
+      pacUp()
     } else if (keyPress === down && currentPositon + width <= width * width - 1) {
-      currentPositon += width
+      // currentPositon += width
+      pacDown()
     } else {
       console.log('Wrong Key!');
     }
@@ -105,22 +126,9 @@ function init() {
     addPac(currentPositon)
   }
 
-  function auto() {
-    // grid.forEach(sqr => sqr.classList.remove(catClass))
-    addPac(currentPositon)
-    // const gridDiv = grid[Math.floor(Math.random() * grid.length)]
-    // gridDiv.classList.add('mole')
-    currentPositon++
-    removePac(currentPositon)
-
-  }
 
 
-  function move() {
-    timeId = setInterval(auto, 200)
-  }
-
-  // move()
+  
 
 
 
