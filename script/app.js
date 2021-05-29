@@ -112,19 +112,12 @@ function init() {
     const keyPress = e.keyCode
     removePac(currentPositon)
     if (keyPress === right && currentPositon % width !== width - 1) {
-      // currentPositon++
-      // const right = setInterval(pacRight, 200)
       pacRight()
     } else if (keyPress === left && currentPositon % width !== 0) {
-      // currentPositon--
-      // clearInterval(right)
-      // setInterval(pacLeft, 200)
       pacLeft()
     } else if (keyPress === up && currentPositon >= width) {
-      // currentPositon -= width
       pacUp()
     } else if (keyPress === down && currentPositon + width <= width * width - 1) {
-      // currentPositon += width
       pacDown()
     } else {
       console.log('Wrong Key!');
