@@ -64,15 +64,22 @@ function init() {
 
   //* Move pac right
   function pacRight(){
-    removePac(currentPositon)
-    currentPositon++
-    addPac(currentPositon)
+    clearInterval(pacLeft)
+    setInterval(() => {
+      removePac(currentPositon)
+      currentPositon++
+      addPac(currentPositon)
+    }, 200);
   }
   
   function pacLeft(){
-    removePac(currentPositon)
-    currentPositon--
-    addPac(currentPositon)
+    clearInterval(pacRight)
+    setInterval(() => {
+      removePac(currentPositon)
+      currentPositon--
+      addPac(currentPositon)
+    }, 200);
+    
   }
 
   //* Move PacMan
@@ -81,11 +88,13 @@ function init() {
     removePac(currentPositon)
     if (keyPress === right && currentPositon % width !== width - 1) {
       // currentPositon++
-      const right = setInterval(pacRight, 200)
+      // const right = setInterval(pacRight, 200)
+      pacRight()
     } else if (keyPress === left && currentPositon % width !== 0){
       // currentPositon--
-      clearInterval(right)
+      // clearInterval(right)
       // setInterval(pacLeft, 200)
+      pacLeft()
     } else if (keyPress === up && currentPositon >= width){
       currentPositon -= width
     } else if (keyPress === down && currentPositon + width <= width * width - 1){
