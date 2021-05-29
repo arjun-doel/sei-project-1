@@ -28,7 +28,13 @@ body {
 }
 
 .yellow {
-  background-color: yellow;
+  background-image: url('../img/placeholder/1200px-Pac_Man.svg.png');
+  background-image: url('../img/placeholder/ZF6W.gif');
+  /* background-color: yellow; */
+  background-size: contain;
+  background-repeat: no-repeat;
+  align-items: center;
+  justify-content: center;
 }
 
 .blue {
