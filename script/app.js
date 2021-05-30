@@ -9,8 +9,8 @@ function init() {
   const cells = []
 
   //* Pac-Man Properties
-  const startPosition = 0
-  let currentPositon = 0
+  const startPosition = 313
+  let currentPositon = 313
   const pacRotLeft = 'pacman-left'
   // const pacRotRight = 'pacman-right'
   // const pacRotUp = 'pacman-up'
@@ -35,7 +35,7 @@ function init() {
       cells.push(cell)
     }
     //? Spawn Pacman @ start
-    addPac(startPosition, 0)
+    addPac(startPosition)
 
     //? Spawn Block
     addBlock(3)
