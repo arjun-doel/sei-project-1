@@ -16,7 +16,19 @@ function init() {
   // const pacRotUp = 'pacman-up'
   // const pacRotDown = 'pacman-down'
   // const pacRotation = ['pacman-left', 'pacman-right', 'pacman-up', 'pacman-down']
-  const blockClass = 'blue'
+  
+  //* Block Properties
+  const blockClass = 'block'
+  const blockArray = [
+    // Left Edge
+    0,20,40,60,80,100,120,260,240,280,300,320,340,360,380,
+    // Left Top Spacing
+    241,242,243,244,224,204,203,202,201,200,
+    // Left Bottom Spacing
+    121,122,123,124,144,164,163,162,161,160
+  ]
+
+  console.log(blockArray.length);
 
   //* Movement Control Properties
   const left = 37
@@ -37,14 +49,17 @@ function init() {
     //? Spawn Pacman @ start
     addPac(startPosition)
 
-    //? Spawn Block
-    addBlock(3)
+    //? Spawn Blocks
+    addBlock(blockArray)
   }
 
 
   //* Spawn Blocks
-  function addBlock(position) {
-    cells[position].classList.add(blockClass)
+  function addBlock(index) {
+    // cells[position].classList.add(blockClass)
+    index.forEach(ite => {
+      cells[ite].classList.add(blockClass)
+    })
   }
 
   //* Spawn Pac
@@ -55,11 +70,6 @@ function init() {
   //* Remove Pac position
   function removePac(position) {
     cells[position].classList.remove(pacRotLeft)
-    // grid.forEach(sqr => sqr.classList.remove('pacman-left'))
-    // grid.forEach(sqr => sqr.classList.remove('pacman-right'))
-    // grid.forEach(sqr => sqr.classList.remove('pacman-up'))
-    // grid.forEach(sqr => sqr.classList.remove('pacman-down'))
-
   }
 
   //! PAC MAN Movement
