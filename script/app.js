@@ -11,10 +11,11 @@ function init() {
   //* Pac-Man Properties
   const startPosition = 0
   let currentPositon = 0
-  const pacRotLeft = 'pacman-left'
-  const pacRotRight = 'pacman-right'
-  const pacRotUp = 'pacman-up'
-  const pacRotDown = 'pacman-down'
+  // const pacRotLeft = 'pacman-left'
+  // const pacRotRight = 'pacman-right'
+  // const pacRotUp = 'pacman-up'
+  // const pacRotDown = 'pacman-down'
+  const pacRotation = ['pacman-left', 'pacman-right', 'pacman-up', 'pacman-down']
   const blockClass = 'blue'
 
   //* Movement Control Properties
@@ -34,7 +35,7 @@ function init() {
       cells.push(cell)
     }
     //? Spawn Pacman @ start
-    addPac(startPosition, pacRotRight)
+    addPac(startPosition, 0)
 
     //? Spawn Block
     addBlock(3)
@@ -47,13 +48,13 @@ function init() {
   }
 
   //* Spawn Pac
-  function addPac(position) {
-    cells[position].classList.add(pacRotLeft)
+  function addPac(position, index) {
+    cells[position].classList.add(pacRotation[index])
   }
 
   //* Remove Pac position
-  function removePac(position) {
-    cells[position].classList.remove(pacRotLeft)
+  function removePac(position, index) {
+    cells[position].classList.remove(pacRotation[index])
   }
 
   //! PAC MAN Movement
@@ -65,11 +66,11 @@ function init() {
   function pacRight() {
     clearInterval(id)
     id = setInterval(() => {
-      removePac(currentPositon)
+      removePac(currentPositon, 5)
       if (currentPositon % width !== width - 1) {
         currentPositon++
       }
-      addPac(currentPositon)
+      addPac(currentPositon, 1)
     }, 150)
   }
 
@@ -77,11 +78,11 @@ function init() {
   function pacLeft() {
     clearInterval(id)
     id = setInterval(() => {
-      removePac(currentPositon)
+      removePac(currentPositon, 5)
       if (currentPositon % width !== 0) {
         currentPositon--
       }
-      addPac(currentPositon)
+      addPac(currentPositon, 0)
     }, 150);
   }
 
@@ -89,11 +90,11 @@ function init() {
   function pacUp() {
     clearInterval(id)
     id = setInterval(() => {
-      removePac(currentPositon)
+      removePac(currentPositon, 5)
       if (currentPositon >= width) {
         currentPositon -= width
       }
-      addPac(currentPositon)
+      addPac(currentPositon, 2)
     }, 150);
   }
 
@@ -101,11 +102,11 @@ function init() {
   function pacDown() {
     clearInterval(id)
     id = setInterval(() => {
-      removePac(currentPositon)
+      removePac(currentPositon, 5)
       if (currentPositon + width <= width * width - 1) {
         currentPositon += width
       }
-      addPac(currentPositon)
+      addPac(currentPositon, 3)
     }, 150);
   }
 
