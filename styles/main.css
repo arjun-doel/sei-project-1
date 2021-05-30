@@ -10,6 +10,7 @@ body {
   align-items: center;
   text-align: center;
   background-color: #242333;
+  color: white;
 }
 
 .grid {
@@ -23,18 +24,19 @@ body {
 }
 
 .grid div {
-  border: 1px solid black;
+  border: 1px solid rgb(255, 255, 255);
   flex-grow: 1;
   height: 5%;
   width: 5%;
 }
 
 .pacman-left {
-  background-image: url('../img/placeholder/Pacman-left.gif');
+  /* background-image: url('../img/placeholder/Pacman-left.gif');
   background-size: contain;
   background-repeat: no-repeat;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
+  background-color: yellow;
 }
 
 .pacman-right {
@@ -59,6 +61,6 @@ body {
   justify-content: center;
 }
 
-.blue {
+.block {
   background-color: blue;
 }
