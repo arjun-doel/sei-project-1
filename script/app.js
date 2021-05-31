@@ -23,15 +23,15 @@ function init() {
     // Left Edge
     0,20,40,60,80,100,120,260,240,280,300,320,340,360,380,
     // Left Top Spacing
-    241,242,243,223,203,202,201,200,
+    241,242,222,202,201,200,
     // Left Bottom Spacing
-    121,122,123,143,163,162,161,160,
+    121,122,142,162,161,160,
     // Right Edge
     19,39,59,79,99,119,139,179,219,259,279,299,319,339,359,379,399,
     // Right Top Spacing
-    138,137,136,156,176,177,178,
+    138,137,157,177,178,
     // Right Bottom Spacing
-    258,257,256,236,216,217,218,
+    258,257,237,217,218,
     // Bottom border
     381,382,383,384,385,386,387,388,389,390,391,392,393,394,395,396,397,398,
     // Top Border
@@ -71,19 +71,27 @@ function init() {
     spawnPoint(pointsArray)
   }
 
+  
 
 
   //* Spawn Blocks
   function addBlock(index) {
-    // cells[position].classList.add(blockClass)
     index.forEach(ite => cells[ite].classList.add(blockClass))
   }
 
   function spawnPoint(index) {
-    // cells[position].classList.add(blockClass)
-    index.forEach(ite => cells[ite].classList.add(pointClass))    
+    index.forEach(ite => cells[ite].classList.add(pointClass))
+    // index.forEach(ite => {
+    //   const container = document.createElement('div')
+    //   container.classList.add(pointClass)
+    //   container.innerText = ite
+    //   cells.appendChild(container)
+    //   cells.push(container)
+    // })    
       
   }
+
+  
 
   //* Spawn Pac
   function addPac(position) {
@@ -177,7 +185,7 @@ function init() {
   function addPoints(pos) {
 
     if (cells[pos].classList.contains(pointClass)){
-      score++
+      score += 10
       scoreDOM.innerHTML = score
       cells[pos].classList.remove(pointClass)
     }
@@ -211,4 +219,3 @@ function init() {
 }
 
 window.addEventListener('DOMContentLoaded', init)
-
