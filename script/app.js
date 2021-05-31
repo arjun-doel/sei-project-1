@@ -57,7 +57,7 @@ function init() {
     // Top right blocks
     57, 77, 97,
     // Top T
-    49, 50, 69, 70, 89, 90,
+    49, 50, 69, 70, 89, 90,129,130,
     // Bottom left L
     264, 284, 304,305, 306, 307,
     // Bottom right L
@@ -112,7 +112,7 @@ function init() {
     addBlock(blockArray)
 
     //? Spawn Points
-    spawnPoint(pointsArray)
+    spawnPoint()
   }
 
 
@@ -124,7 +124,11 @@ function init() {
   }
 
   function spawnPoint() {
-    // index.forEach(ite => cells[ite].classList.add(pointClass))
+    // cells.forEach(ite => {
+    //   if (!ite.classList.contains(blockClass)) {
+    //     cells.classList.add(pointClass)
+    //   }
+    // }
     // for (let i = 0; i < pointsArray.length; i++) {
     //   const cell = document.createElement('div')
     //   cell.classList.add('cell')
@@ -139,7 +143,6 @@ function init() {
     //   cells.appendChild(container)
     //   cells.push(container)
     // })    
-
   }
 
 
