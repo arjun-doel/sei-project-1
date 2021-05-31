@@ -42,7 +42,7 @@ function init() {
   let score = 0
   const scoreDOM = document.querySelector('.score')
   const pointClass = 'points'
-  const pointsArray = [107,108,109]
+  const pointsArray = [107,108,109,110,111,112,113,114]
 
 
   //* Movement Control Properties
@@ -81,7 +81,8 @@ function init() {
 
   function spawnPoint(index) {
     // cells[position].classList.add(blockClass)
-    index.forEach(ite => cells[ite].classList.add(pointClass))
+    index.forEach(ite => cells[ite].classList.add(pointClass))    
+      
   }
 
   //* Spawn Pac
