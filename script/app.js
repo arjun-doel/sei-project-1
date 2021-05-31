@@ -9,8 +9,8 @@ function init() {
   const cells = []
 
   //* Pac-Man Properties
-  const startPosition = 354
-  let currentPositon = 354
+  const startPosition = 251
+  let currentPositon = 251
   const pacRotLeft = 'pacman-left'
   // const pacRotRight = 'pacman-right'
   // const pacRotUp = 'pacman-up'
@@ -37,37 +37,48 @@ function init() {
     // Top Border
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
     // Bottom Right blocks
-    282,302,322,342,
+    282, 302, 322, 342,
     // Bottom Left blocks
-    297,317,337,357,
+    297, 317, 337, 357,
     // Box
-    167,168,171,172,
+    167, 168, 171, 172,
     // Box Left Edge
-    187,207,227,
+    187, 207, 227,
     // Box Bottom
-    228,229,230,231,
+    228, 229, 230, 231,
     // Box Right Edge
-    192,212,232,
+    192, 212, 232,
     // Box outer edge left
-    204,184,185,205,
+    204, 184, 185, 205,224,225,
     // Box outer edge right
-    194,195,214,215,
+    194, 195, 214, 215,234,235,
     // Top left blocks
-    42,62,82,
+    42, 62, 82,
     // Top right blocks
-    57,77,97,
+    57, 77, 97,
     // Top T
-    49,50,69,70,89,90,
+    49, 50, 69, 70, 89, 90,
     // Bottom left L
-    245,265,285,305,306,307,
+    264, 284, 304,305, 306, 307,
     // Bottom right L
-    254,274,294,314,313,312,
+    275, 295, 315, 313, 312,314,
     // Top right L
-    112,92,72,73,74,75,32,35,
+    112, 92, 72, 73, 74, 75, 32, 35,
     // Top left L
-    107,87,67,66,65,64,27,24,
+    107, 87, 67, 66, 65, 64, 27, 24,
     // Bottom T
-    350,349,330,329,349
+    350, 349, 330, 329, 349,309,310,
+    // Top left square
+    124,125,144,145,104,105,
+    // Top right square
+    134,135,154,155,114,115,
+    // Inside bottom Ls
+    267,268,269,270,271,272,266,273,
+    // Bottom left line
+    344,345,346,347,
+    // Bottom left line
+    352,353,354,355,
+
   ]
 
 
@@ -112,7 +123,7 @@ function init() {
     index.forEach(ite => cells[ite].classList.add(blockClass))
   }
 
-  function spawnPoint(index) {
+  function spawnPoint() {
     // index.forEach(ite => cells[ite].classList.add(pointClass))
     // for (let i = 0; i < pointsArray.length; i++) {
     //   const cell = document.createElement('div')
@@ -154,7 +165,7 @@ function init() {
     id = setInterval(() => {
       removePac(currentPositon)
       // && currentPositon +1 !== 357
-      if (currentPositon % width !== width - 1 && !cells[currentPositon +1].classList.contains(blockClass)) {
+      if (currentPositon % width !== width - 1 && !cells[currentPositon + 1].classList.contains(blockClass)) {
         currentPositon++
       }
       addPac(currentPositon)
@@ -167,7 +178,7 @@ function init() {
     clearInterval(id)
     id = setInterval(() => {
       removePac(currentPositon)
-      if (currentPositon % width !== 0 && !cells[currentPositon -1].classList.contains(blockClass)) {
+      if (currentPositon % width !== 0 && !cells[currentPositon - 1].classList.contains(blockClass)) {
         currentPositon--
       }
       addPac(currentPositon)
@@ -180,7 +191,7 @@ function init() {
     clearInterval(id)
     id = setInterval(() => {
       removePac(currentPositon)
-      if (currentPositon >= width && !cells[currentPositon -width].classList.contains(blockClass)) {
+      if (currentPositon >= width && !cells[currentPositon - width].classList.contains(blockClass)) {
         currentPositon -= width
       }
       addPac(currentPositon)
@@ -193,7 +204,7 @@ function init() {
     clearInterval(id)
     id = setInterval(() => {
       removePac(currentPositon)
-      if (currentPositon + width <= width * width - 1 && !cells[currentPositon +width].classList.contains(blockClass)) {
+      if (currentPositon + width <= width * width - 1 && !cells[currentPositon + width].classList.contains(blockClass)) {
         currentPositon += width
       }
       addPac(currentPositon)
