@@ -170,7 +170,7 @@ function init() {
   //* Add points
   function addPoints(pos) {
 
-    if (pos.classList.contains(pointClass)){
+    if (cells[pos].classList.contains(pointClass)){
       console.log('SCORE 1');
     }
   }
