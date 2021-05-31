@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 * {
   box-sizing: border-box;
 }
@@ -6,11 +8,19 @@ body {
   margin: 0;
   height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   background-color: #242333;
   color: white;
+}
+
+h1 {
+  font-family: 'Press Start 2P', cursive;
+  align-items: center;
+  box-shadow: 2px 2px coral;
+  font-size: 60px;
 }
 
 .grid {
@@ -63,4 +73,8 @@ body {
 
 .block {
   background-color: blue;
+}
+
+.points {
+  background-color: green;
 }
