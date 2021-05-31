@@ -153,7 +153,8 @@ function init() {
     clearInterval(id)
     id = setInterval(() => {
       removePac(currentPositon)
-      if (currentPositon % width !== width - 1) {
+      // && currentPositon +1 !== 357
+      if (currentPositon % width !== width - 1 && !cells[currentPositon +1].classList.contains(blockClass)) {
         currentPositon++
       }
       addPac(currentPositon)
@@ -166,7 +167,7 @@ function init() {
     clearInterval(id)
     id = setInterval(() => {
       removePac(currentPositon)
-      if (currentPositon % width !== 0) {
+      if (currentPositon % width !== 0 && !cells[currentPositon -1].classList.contains(blockClass)) {
         currentPositon--
       }
       addPac(currentPositon)
@@ -179,7 +180,7 @@ function init() {
     clearInterval(id)
     id = setInterval(() => {
       removePac(currentPositon)
-      if (currentPositon >= width) {
+      if (currentPositon >= width && !cells[currentPositon >= width].classList.contains(blockClass)) {
         currentPositon -= width
       }
       addPac(currentPositon)
@@ -206,7 +207,7 @@ function init() {
     const keyPress = e.keyCode
 
     removePac(currentPositon)
-    if (keyPress === right && currentPositon % width !== width - 1) {
+    if (keyPress === right && currentPositon % width !== width - 1 && currentPositon !== 357) {
       pacRight()
     } else if (keyPress === left && currentPositon % width !== 0) {
       pacLeft()
@@ -218,8 +219,8 @@ function init() {
       console.log('Wrong Key!');
     }
     addPac(currentPositon)
-
   }
+
 
   //* Add points
   function addPoints(pos) {
@@ -231,6 +232,7 @@ function init() {
     }
   }
 
+  console.log(currentPositon.classList);
 
 
 
