@@ -84,8 +84,5 @@ h1 {
 }
 
 .points {
-  width: 50%;
-  height: 50%;
-  background-size: 50% auto;
-  background-color: pink; 
+  color: red
 }
