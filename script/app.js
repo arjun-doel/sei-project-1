@@ -180,7 +180,7 @@ function init() {
     clearInterval(id)
     id = setInterval(() => {
       removePac(currentPositon)
-      if (currentPositon >= width && !cells[currentPositon >= width].classList.contains(blockClass)) {
+      if (currentPositon >= width && !cells[currentPositon -width].classList.contains(blockClass)) {
         currentPositon -= width
       }
       addPac(currentPositon)
@@ -193,7 +193,7 @@ function init() {
     clearInterval(id)
     id = setInterval(() => {
       removePac(currentPositon)
-      if (currentPositon + width <= width * width - 1) {
+      if (currentPositon + width <= width * width - 1 && !cells[currentPositon +width].classList.contains(blockClass)) {
         currentPositon += width
       }
       addPac(currentPositon)
