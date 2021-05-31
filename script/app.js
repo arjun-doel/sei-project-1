@@ -25,7 +25,13 @@ function init() {
     // Left Top Spacing
     241,242,243,244,224,204,203,202,201,200,
     // Left Bottom Spacing
-    121,122,123,124,144,164,163,162,161,160
+    121,122,123,124,144,164,163,162,161,160,
+    // Right Edge
+    19,39,59,79,99,119,139,179,219,259,279,299,319,339,359,379,399,
+    // Right Top Spacing
+    138,137,136,135,155,175,176,177,178,
+    // Right Bottom Spacing
+    258,257,256,255,235,215,216,217,218
   ]
 
   console.log(blockArray.length);
@@ -57,9 +63,7 @@ function init() {
   //* Spawn Blocks
   function addBlock(index) {
     // cells[position].classList.add(blockClass)
-    index.forEach(ite => {
-      cells[ite].classList.add(blockClass)
-    })
+    index.forEach(ite => cells[ite].classList.add(blockClass))
   }
 
   //* Spawn Pac
@@ -129,6 +133,7 @@ function init() {
   //* Move PacMan
   function movement(e) {
     const keyPress = e.keyCode
+    
     removePac(currentPositon)
     if (keyPress === right && currentPositon % width !== width - 1) {
       pacRight()
