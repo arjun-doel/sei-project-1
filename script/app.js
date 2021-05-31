@@ -39,7 +39,8 @@ function init() {
   ]
 
   //* Point Properties
-  let score;
+  let score = 0
+  const scoreDOM = document.querySelector('.score')
   const pointClass = 'points'
   const pointsArray = [107,108,109]
 
@@ -175,7 +176,9 @@ function init() {
   function addPoints(pos) {
 
     if (cells[pos].classList.contains(pointClass)){
-      console.log('SCORE 1');
+      score++
+      scoreDOM.innerHTML = score
+      cells[pos].classList.remove(pointClass)
     }
   }
 

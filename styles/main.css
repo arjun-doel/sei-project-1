@@ -19,8 +19,16 @@ body {
 h1 {
   font-family: 'Press Start 2P', cursive;
   align-items: center;
-  box-shadow: 2px 2px coral;
+  box-shadow: 1px 1px coral;
   font-size: 60px;
+}
+
+.nav-wrapper {
+  display: flex;
+  width: 800px;
+  justify-content: space-around;
+  align-items: center;
+  font-family: 'Press Start 2P', cursive;
 }
 
 .grid {
