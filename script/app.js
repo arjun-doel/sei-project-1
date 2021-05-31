@@ -107,6 +107,7 @@ function init() {
         currentPositon++
       }
       addPac(currentPositon)
+      addPoints(currentPositon)
     }, 150)
   }
 
@@ -119,6 +120,7 @@ function init() {
         currentPositon--
       }
       addPac(currentPositon)
+      addPoints(currentPositon)
     }, 150);
   }
 
@@ -131,6 +133,7 @@ function init() {
         currentPositon -= width
       }
       addPac(currentPositon)
+      addPoints(currentPositon)
     }, 150);
   }
 
@@ -143,6 +146,7 @@ function init() {
         currentPositon += width
       }
       addPac(currentPositon)
+      addPoints(currentPositon)
     }, 150);
   }
 
@@ -164,7 +168,7 @@ function init() {
       console.log('Wrong Key!');
     }
     addPac(currentPositon)
-    addPoints(currentPositon)
+    
   }
 
   //* Add points
