@@ -257,7 +257,7 @@ function init() {
       score += 10
       scoreDOM.innerHTML = score
       // cells[pos].node.removeChild(pointChild)
-      cells.removeChild(cells.childNodes[1])
+      cells[pos].innerHTML = ''
     }
   }
 
