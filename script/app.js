@@ -85,7 +85,7 @@ function init() {
   //* Point Properties
   let score = 0
   const scoreDOM = document.querySelector('.score')
-  const pointClass = 'points'
+  const pointChild = `<i class="fas fa-circle"></i>`
   const pointsArray = [107, 108, 109, 110, 111, 112, 113, 114, 67, 68, 71, 72, 73, 74]
 
 
@@ -117,12 +117,7 @@ function init() {
 
   createGrid(startPosition)
 
-  const test = document.createElement('div')
-  const cells1  = document.querySelector('.cell')
-  cells1.innerHTML = `<i class="fas fa-circle"></i>`
-  
-  // cells.push(test)
-  console.log(cells1);
+
 
 
 
@@ -134,7 +129,12 @@ function init() {
   }
 
   function spawnPoint() {
-    // cells.forEach(ite => {
+    const cells1  = document.querySelectorAll('.cell')
+    cells.forEach(ite => {
+      if (!ite.classList.contains(blockClass)){
+        ite.innerHTML = pointChild
+      }
+    })
     //   if (!ite.classList.contains(blockClass)) {
     //     cells.classList.add(pointClass)
     //   }
@@ -246,13 +246,18 @@ function init() {
   }
 
 
+  const i = document.querySelectorAll('i')
+  console.log(i);
+
   //* Add points
   function addPoints(pos) {
-
-    if (cells[pos].classList.contains(pointClass)) {
+    const i = document.querySelectorAll('i')
+    
+    if (cells[pos].innerHTML === pointChild) {
       score += 10
       scoreDOM.innerHTML = score
-      cells[pos].classList.remove(pointClass)
+      // cells[pos].node.removeChild(pointChild)
+      cells.removeChild(cells.childNodes[1])
     }
   }
 

@@ -54,6 +54,17 @@ h1 {
   justify-content: center;
 }
 
+i {
+  font-size: 9px;
+  animation: blinker 2s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 40%;
+  }
+}
+
 .pacman-left {
   /* background-image: url('../img/placeholder/Pacman-left.gif');
   background-size: contain;
