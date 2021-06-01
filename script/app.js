@@ -115,6 +115,16 @@ function init() {
     spawnPoint()
   }
 
+  createGrid(startPosition)
+
+  const test = document.createElement('div')
+  const cells1  = document.querySelector('.cell')
+  // test.innerHTML = `<i class="fas fa-circle"></i>`
+  // cells.appendChild(test)
+  // cells.push(test)
+  console.log(cells1);
+
+
 
 
 
@@ -246,13 +256,13 @@ function init() {
     }
   }
 
-  console.log(currentPositon.classList);
+  
 
 
 
 
   document.addEventListener('keydown', movement)
-  createGrid(startPosition)
+  
 
 
 
