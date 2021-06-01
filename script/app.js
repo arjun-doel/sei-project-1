@@ -12,9 +12,9 @@ function init() {
   const startPosition = 251
   let currentPositon = 251
   const pacRotLeft = 'pacman-left'
-  // const pacRotRight = 'pacman-right'
-  // const pacRotUp = 'pacman-up'
-  // const pacRotDown = 'pacman-down'
+  const pacRotRight = 'pacman-right'
+  const pacRotUp = 'pacman-up'
+  const pacRotDown = 'pacman-down'
   // const pacRotation = ['pacman-left', 'pacman-right', 'pacman-up', 'pacman-down']
 
   //* Block Properties
@@ -49,35 +49,35 @@ function init() {
     // Box Right Edge
     192, 212, 232,
     // Box outer edge left
-    204, 184, 185, 205,224,225,
+    204, 184, 185, 205, 224, 225,
     // Box outer edge right
-    194, 195, 214, 215,234,235,
+    194, 195, 214, 215, 234, 235,
     // Top left blocks
     42, 62, 82,
     // Top right blocks
     57, 77, 97,
     // Top T
-    49, 50, 69, 70, 89, 90,129,130,
+    49, 50, 69, 70, 89, 90, 129, 130,
     // Bottom left L
-    264, 284, 304,305, 306, 307,
+    264, 284, 304, 305, 306, 307,
     // Bottom right L
-    275, 295, 315, 313, 312,314,
+    275, 295, 315, 313, 312, 314,
     // Top right L
     112, 92, 72, 73, 74, 75, 32, 35,
     // Top left L
     107, 87, 67, 66, 65, 64, 27, 24,
     // Bottom T
-    350, 349, 330, 329, 349,309,310,
+    350, 349, 330, 329, 349, 309, 310,
     // Top left square
-    124,125,144,145,104,105,
+    124, 125, 144, 145, 104, 105,
     // Top right square
-    134,135,154,155,114,115,
+    134, 135, 154, 155, 114, 115,
     // Inside bottom Ls
-    267,268,269,270,271,272,266,273,
+    267, 268, 269, 270, 271, 272, 266, 273,
     // Bottom left line
-    344,345,346,347,
+    344, 345, 346, 347,
     // Bottom left line
-    352,353,354,355,
+    352, 353, 354, 355,
 
   ]
 
@@ -105,7 +105,7 @@ function init() {
       cells.push(cell)
     }
     //? Spawn Pacman @ start
-    addPac(startPosition)
+    addPac(startPosition, pacRotLeft)
 
     //? Spawn Blocks
     addBlock(blockArray)
@@ -128,42 +128,24 @@ function init() {
   }
 
   function spawnPoint() {
-    const cells1  = document.querySelectorAll('.cell')
+    const cells1 = document.querySelectorAll('.cell')
     cells.forEach(ite => {
-      if (!ite.classList.contains(blockClass)){
+      if (!ite.classList.contains(blockClass)) {
         ite.innerHTML = pointChild
       }
     })
-    //   if (!ite.classList.contains(blockClass)) {
-    //     cells.classList.add(pointClass)
-    //   }
-    // }
-    // for (let i = 0; i < pointsArray.length; i++) {
-    //   const cell = document.createElement('div')
-    //   cell.classList.add('cell')
-    //   cell.innerText = i
-    //   grid.appendChild(cell)
-    //   cells.push(cell)
-    // }
-    // index.forEach(ite => {
-    //   const container = document.createElement('div')
-    //   container.classList.add(pointClass)
-    //   container.innerText = ite
-    //   cells.appendChild(container)
-    //   cells.push(container)
-    // })    
   }
 
 
 
   //* Spawn Pac
-  function addPac(position) {
-    cells[position].classList.add(pacRotLeft)
+  function addPac(position, rotation) {
+    cells[position].classList.add(rotation)
   }
 
   //* Remove Pac position
   function removePac(position) {
-    cells[position].classList.remove(pacRotLeft)
+    cells[position].classList.remove(pacRotLeft, pacRotRight, pacRotDown, pacRotUp)
   }
 
   //! PAC MAN Movement
@@ -180,7 +162,7 @@ function init() {
       if (currentPositon % width !== width - 1 && !cells[currentPositon + 1].classList.contains(blockClass)) {
         currentPositon++
       }
-      addPac(currentPositon)
+      addPac(currentPositon, pacRotRight)
       addPoints(currentPositon)
     }, 150)
   }
@@ -193,7 +175,7 @@ function init() {
       if (currentPositon % width !== 0 && !cells[currentPositon - 1].classList.contains(blockClass)) {
         currentPositon--
       }
-      addPac(currentPositon)
+      addPac(currentPositon, pacRotLeft)
       addPoints(currentPositon)
     }, 150);
   }
@@ -206,7 +188,7 @@ function init() {
       if (currentPositon >= width && !cells[currentPositon - width].classList.contains(blockClass)) {
         currentPositon -= width
       }
-      addPac(currentPositon)
+      addPac(currentPositon, pacRotUp)
       addPoints(currentPositon)
     }, 150);
   }
@@ -219,7 +201,7 @@ function init() {
       if (currentPositon + width <= width * width - 1 && !cells[currentPositon + width].classList.contains(blockClass)) {
         currentPositon += width
       }
-      addPac(currentPositon)
+      addPac(currentPositon, pacRotDown)
       addPoints(currentPositon)
     }, 150);
   }
@@ -256,13 +238,13 @@ function init() {
     }
   }
 
-  
+
 
 
 
 
   document.addEventListener('keydown', movement)
-  
+
 
 
 
