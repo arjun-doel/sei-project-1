@@ -119,8 +119,8 @@ function init() {
 
   const test = document.createElement('div')
   const cells1  = document.querySelector('.cell')
-  // test.innerHTML = `<i class="fas fa-circle"></i>`
-  // cells.appendChild(test)
+  cells1.innerHTML = `<i class="fas fa-circle"></i>`
+  
   // cells.push(test)
   console.log(cells1);
 

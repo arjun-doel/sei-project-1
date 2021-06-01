@@ -48,6 +48,12 @@ h1 {
   width: 5%;
 }
 
+.cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .pacman-left {
   /* background-image: url('../img/placeholder/Pacman-left.gif');
   background-size: contain;
