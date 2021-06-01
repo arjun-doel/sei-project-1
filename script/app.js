@@ -17,6 +17,16 @@ function init() {
   const pacRotDown = 'pacman-down'
   // const pacRotation = ['pacman-left', 'pacman-right', 'pacman-up', 'pacman-down']
 
+  //* Ghost Properties
+  const ghost1 = 'ghost1'
+  const ghost2 = 'ghost2'
+  const ghost3 = 'ghost3'
+  const ghost4 = 'ghost4'
+  const ghost1Start = 209
+  const ghost2Start = 210
+  const ghost3Start = 189
+  const ghost4Start = 190
+
   //* Block Properties
   const blockClass = 'block'
   const blockArray = [
@@ -101,12 +111,18 @@ function init() {
     for (let i = 0; i < cellCount; i++) {
       const cell = document.createElement('div')
       cell.classList.add('cell')
-      // cell.innerText = i
+      cell.innerText = i
       grid.appendChild(cell)
       cells.push(cell)
     }
     //? Spawn Pacman @ start
     addPac(startPosition, pacRotLeft)
+    
+    //? Spawn Ghosts
+    spawnGhost(ghost1Start, ghost1)
+    spawnGhost(ghost2Start, ghost2)
+    spawnGhost(ghost3Start, ghost3)
+    spawnGhost(ghost4Start, ghost4)
 
     //? Spawn Blocks
     addBlock(blockArray)
@@ -152,6 +168,11 @@ function init() {
     cells[position].classList.remove(pacRotLeft, pacRotRight, pacRotDown, pacRotUp)
   }
 
+  //* Spawn Ghosts
+  function spawnGhost(position, ghost){
+    cells[position].classList.add(ghost)
+  }
+
   //! PAC MAN Movement
 
   //* Time ID to cancel and start intervals
@@ -168,7 +189,7 @@ function init() {
       }
       addPac(currentPositon, pacRotRight)
       addPoints(currentPositon)
-    }, 150)
+    }, 120)
   }
 
   //* Move pac left
@@ -181,7 +202,7 @@ function init() {
       }
       addPac(currentPositon, pacRotLeft)
       addPoints(currentPositon)
-    }, 150);
+    }, 120);
   }
 
   //* Move pac up
@@ -194,7 +215,7 @@ function init() {
       }
       addPac(currentPositon, pacRotUp)
       addPoints(currentPositon)
-    }, 150);
+    }, 120);
   }
 
   //* Move pac down
@@ -207,7 +228,7 @@ function init() {
       }
       addPac(currentPositon, pacRotDown)
       addPoints(currentPositon)
-    }, 150);
+    }, 120);
   }
 
 
