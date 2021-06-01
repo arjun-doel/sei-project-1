@@ -86,7 +86,6 @@ function init() {
   let score = 0
   const scoreDOM = document.querySelector('.score')
   const pointChild = `<i class="fas fa-circle"></i>`
-  const pointsArray = [107, 108, 109, 110, 111, 112, 113, 114, 67, 68, 71, 72, 73, 74]
 
 
   //* Movement Control Properties
@@ -101,7 +100,7 @@ function init() {
     for (let i = 0; i < cellCount; i++) {
       const cell = document.createElement('div')
       cell.classList.add('cell')
-      cell.innerText = i
+      // cell.innerText = i
       grid.appendChild(cell)
       cells.push(cell)
     }
@@ -114,7 +113,7 @@ function init() {
     //? Spawn Points
     spawnPoint()
   }
-
+  //* Call grid function, creates grid on DOM 
   createGrid(startPosition)
 
 
@@ -246,13 +245,9 @@ function init() {
   }
 
 
-  const i = document.querySelectorAll('i')
-  console.log(i);
-
   //* Add points
   function addPoints(pos) {
     const i = document.querySelectorAll('i')
-    
     if (cells[pos].innerHTML === pointChild) {
       score += 10
       scoreDOM.innerHTML = score

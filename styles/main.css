@@ -42,7 +42,7 @@ h1 {
 }
 
 .grid div {
-  border: 1px solid rgb(255, 255, 255);
+  /* border: 1px solid rgb(255, 255, 255); */
   flex-grow: 1;
   height: 5%;
   width: 5%;
@@ -66,12 +66,12 @@ i {
 }
 
 .pacman-left {
-  /* background-image: url('../img/placeholder/Pacman-left.gif');
+  background-image: url('../img/placeholder/Pacman-left.gif');
   background-size: contain;
   background-repeat: no-repeat;
   align-items: center;
-  justify-content: center; */
-  background-color: yellow;
+  justify-content: center;
+  /* background-color: yellow; */
 }
 
 .pacman-right {
@@ -97,7 +97,7 @@ i {
 }
 
 .block {
-  background-color: blue;
+  background-color: rgba(0, 0, 255, 0.63);
 }
 
 .points {
