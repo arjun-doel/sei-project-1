@@ -96,6 +96,23 @@ i {
   justify-content: center;
 }
 
+.pacman-left::before {
+  transition: all 0.75s;
+  transition-delay: 3ms;
+}
+.pacman-right::before {
+  transition: all 0.75s;
+  transition-delay: 3ms;
+}
+.pacman-up::before {
+  transition: all 0.75s;
+  transition-delay: 3ms;
+}
+.pacman-down::before {
+  transition: all 0.75s;
+  transition-delay: 3ms;
+}
+
 .ghost1 {
   background-color: red;
 }

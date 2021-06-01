@@ -168,9 +168,21 @@ function init() {
     cells[position].classList.remove(pacRotLeft, pacRotRight, pacRotDown, pacRotUp)
   }
 
-  //* Spawn Ghosts
+  //* Add Ghosts Position
   function spawnGhost(position, ghost){
     cells[position].classList.add(ghost)
+  }
+
+  function removeGhost(position) {
+    cells[position].classList.remove(ghost)
+  }
+
+  //*Ghost Time ID
+  let ghostID;
+
+  //*Chase pacman
+  function chasePac(){
+    
   }
 
   //! PAC MAN Movement
@@ -189,7 +201,7 @@ function init() {
       }
       addPac(currentPositon, pacRotRight)
       addPoints(currentPositon)
-    }, 120)
+    }, 150)
   }
 
   //* Move pac left
@@ -202,7 +214,7 @@ function init() {
       }
       addPac(currentPositon, pacRotLeft)
       addPoints(currentPositon)
-    }, 120);
+    }, 150);
   }
 
   //* Move pac up
@@ -215,7 +227,7 @@ function init() {
       }
       addPac(currentPositon, pacRotUp)
       addPoints(currentPositon)
-    }, 120);
+    }, 150);
   }
 
   //* Move pac down
@@ -228,7 +240,7 @@ function init() {
       }
       addPac(currentPositon, pacRotDown)
       addPoints(currentPositon)
-    }, 120);
+    }, 150);
   }
 
 
