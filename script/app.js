@@ -85,6 +85,7 @@ function init() {
   //* Point Properties
   let score = 0
   const scoreDOM = document.querySelector('.score')
+  const highScore = document.querySelector('high-score')
   const pointChild = `<i class="fas fa-circle"></i>`
 
 
@@ -127,8 +128,8 @@ function init() {
     index.forEach(ite => cells[ite].classList.add(blockClass))
   }
 
+  //* Spawn Points
   function spawnPoint() {
-    const cells1 = document.querySelectorAll('.cell')
     cells.forEach(ite => {
       if (!ite.classList.contains(blockClass)) {
         ite.innerHTML = pointChild
@@ -235,6 +236,18 @@ function init() {
       scoreDOM.innerHTML = score
       // cells[pos].node.removeChild(pointChild)
       cells[pos].innerHTML = ''
+    }
+    addToLocalStorage(score)
+  }
+
+  //* Set Local Storage
+  function addToLocalStorage(value){
+    const getCurrentScore = localStorage.getItem("pac-man-score")
+    if (value > getCurrentScore) {
+      localStorage.setItem("pac-man-score", score)
+      highScore.innerHTML = localStorage.getItem("pac-man-score")
+    } else {
+      highScore.innerHTML = localStorage.getItem("pac-man-score")
     }
   }
 
