@@ -85,7 +85,7 @@ function init() {
   //* Point Properties
   let score = 0
   const scoreDOM = document.querySelector('.score')
-  const highScore = document.querySelector('high-score')
+  const highScore = document.querySelector('.high-score')
   const pointChild = `<i class="fas fa-circle"></i>`
 
 
@@ -113,6 +113,9 @@ function init() {
 
     //? Spawn Points
     spawnPoint()
+
+    //? Show localStorage
+    getLocalStorage()
   }
   //* Call grid function, creates grid on DOM 
   createGrid(startPosition)
@@ -241,7 +244,7 @@ function init() {
   }
 
   //* Set Local Storage
-  function addToLocalStorage(value){
+  function addToLocalStorage(value) {
     const getCurrentScore = localStorage.getItem("pac-man-score")
     if (value > getCurrentScore) {
       localStorage.setItem("pac-man-score", score)
@@ -249,6 +252,11 @@ function init() {
     } else {
       highScore.innerHTML = localStorage.getItem("pac-man-score")
     }
+  }
+
+  //* Get Local Storage
+  function getLocalStorage(){
+    highScore.innerHTML = localStorage.getItem("pac-man-score")
   }
 
 
