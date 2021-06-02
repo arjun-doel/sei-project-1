@@ -285,20 +285,20 @@ function init() {
       const moveOptions = [width, -1, +1, -width]
       let randomise = moveOptions[(Math.floor(Math.random() * moveOptions.length))]
       ghostID = setInterval(() => {
-        removeGhost(ghost)
-        if(!cells[ghostPos + randomise].classList.contains(blockClass)){
+        removeGhost(ghostPos)
+        if(!cells[ghostPos + randomise].classList.contains(blockClass) && !cells[ghostPos + randomise].classList.contains(ghost1, ghost2, ghost3, ghost4)){
           ghostPos += randomise
         } else {
           randomise = moveOptions[(Math.floor(Math.random() * moveOptions.length))]
         }
-        spawnGhost(ghost)
-      }, 130)
+        spawnGhost(ghostPos, ghost)
+      }, 170)
     }
 
     ghostMovement(ghost1Start, ghost1)
     ghostMovement(ghost2Start, ghost2)
-    // ghostMovement(ghost3Start, ghost3)
-    // ghostMovement(ghost4Start, ghost4)
+    ghostMovement(ghost3Start, ghost3)
+    ghostMovement(ghost4Start, ghost4)
 
 
   // setInterval(chasePac, 150)
