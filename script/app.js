@@ -152,7 +152,7 @@ function init() {
   //* Spawn Points
   function spawnPoint() {
     cells.forEach(ite => {
-      if (!ite.classList.contains(blockClass)) {
+      if (!ite.classList.contains(blockClass) && ite !== 251) {
         ite.innerHTML = pointChild
       }
     })
@@ -240,56 +240,6 @@ function init() {
   }
 
 
-  //* Move Ghost right
-  function ghostRight() {
-    clearInterval(ghostID)
-    ghostID = setInterval(() => {
-      removeGhost(ghost1Start)
-      // && currentPositon +1 !== 357
-      if (ghost1Start % width !== width - 1 && !cells[ghost1Start + 1].classList.contains(blockClass)) {
-        ghost1Start++
-      }
-      spawnGhost(ghost1Start)
-    }, 150)
-  }
-
-  //* Move ghost left
-  function ghostLeft() {
-    clearInterval(ghostID)
-    ghostID = setInterval(() => {
-      removeGhost(ghost1Start)
-      if (ghost1Start % width !== 0 && !cells[ghost1Start - 1].classList.contains(blockClass)) {
-        ghost1Start--
-      }
-      spawnGhost(ghost1Start)
-    }, 150);
-  }
-
-  //* Move ghost up
-  function ghostUp() {
-    clearInterval(ghostID)
-    ghostID = setInterval(() => {
-      removeGhost(ghost1Start)
-      if (ghost1Start >= width && !cells[ghost1Start - width].classList.contains(blockClass)) {
-        ghost1Start -= width
-      }
-      spawnGhost(ghost1Start)
-    }, 150);
-  }
-
-  //* Move ghost down
-  function ghostDown() {
-    clearInterval(ghostID)
-    ghostID = setInterval(() => {
-      removePac(currentPositon)
-      if (ghost1Start + width <= width * width - 1 && !cells[ghost1Start + width].classList.contains(blockClass)) {
-        ghost1Start += width
-      }
-      spawnGhost(ghost1Start)
-    }, 150);
-  }
-
-
   //* Move PacMan
   function movement(e) {
     const keyPress = e.keyCode
@@ -309,23 +259,37 @@ function init() {
     addPac(currentPositon)
   }
 
+    //* Move Ghost right
+    function ghostRight() {
+      clearInterval(ghostID)
+      ghostID = setInterval(() => {
+        removeGhost(ghost1Start)
+        // && currentPositon +1 !== 357
+        if (ghost1Start % width !== width - 1 && !cells[ghost1Start + 1].classList.contains(blockClass)) {
+          ghost1Start++
+        }
+        spawnGhost(ghost1Start)
+      }, 150)
+    }
   
 
   //*Chase pacman
   function chasePac() {
     removeGhost(ghost1Start)
     // Ghost Right
-    if (ghost1Start <= currentPositon && ghost1Start % width !== width - 1 && !cells[ghost1Start + 1].classList.contains(blockClass)) {
-      if (ghost1Start % width !== width - 1 && !cells[ghost1Start + 1].classList.contains(blockClass)){
+    if (ghost1Start <= currentPositon) {
+      ghostRight()
+    } else if(!cells[ghost1Start - width].classList.contains(blockClass)){
+      ghostUp()
+    } else {
 
-      }
-      ghost1Start++
-      // Ghost Left
     }
     spawnGhost(ghost1Start)
   }
+    
 
-  setInterval(chasePac, 150)
+
+  chasePac()
 
 
   //* Add points
