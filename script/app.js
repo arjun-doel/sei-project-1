@@ -15,17 +15,16 @@ function init() {
   const pacRotRight = 'pacman-right'
   const pacRotUp = 'pacman-up'
   const pacRotDown = 'pacman-down'
-  // const pacRotation = ['pacman-left', 'pacman-right', 'pacman-up', 'pacman-down']
 
   //* Ghost Properties
-  const ghost1 = 'ghost1'
+  const ghost = 'ghost1'
   const ghost2 = 'ghost2'
   const ghost3 = 'ghost3'
   const ghost4 = 'ghost4'
-  const ghost1Start = 209
-  const ghost2Start = 210
-  const ghost3Start = 189
-  const ghost4Start = 190
+  let ghost1Start = 209
+  let ghost2Start = 210
+  let ghost3Start = 189
+  let ghost4Start = 190
 
   //* Block Properties
   const blockClass = 'block'
@@ -117,15 +116,12 @@ function init() {
     }
     //? Spawn Pacman @ start
     addPac(startPosition, pacRotLeft)
-    
-    //? Spawn Ghosts
-    spawnGhost(ghost1Start, ghost1)
-    spawnGhost(ghost2Start, ghost2)
-    spawnGhost(ghost3Start, ghost3)
-    spawnGhost(ghost4Start, ghost4)
 
-    //? Ghost Chase
-    // chasePac()
+    //? Spawn Ghosts
+    spawnGhost(ghost1Start)
+    // spawnGhost(ghost2Start, ghost2)
+    // spawnGhost(ghost3Start, ghost3)
+    // spawnGhost(ghost4Start, ghost4)
 
     //? Spawn Blocks
     addBlock(blockArray)
@@ -172,24 +168,15 @@ function init() {
   }
 
   //* Add Ghosts Position
-  function spawnGhost(position, ghost){
+  function spawnGhost(position) {
     cells[position].classList.add(ghost)
   }
 
-  // function removeGhost(position) {
-  //   cells[position].classList.remove(ghost)
-  // }
+  function removeGhost(position) {
+    cells[position].classList.remove(ghost)
+  }
 
-  //*Ghost Time ID
-  let ghostID;
 
-  //*Chase pacman
-  // function chasePac(){
-  //   ghostID = setInterval(() => {
-  //     removeGhost(ghost1Start)
-      
-  //   })
-  // }
 
   //! PAC MAN Movement
 
@@ -269,6 +256,20 @@ function init() {
     addPac(currentPositon)
   }
 
+  //*Ghost Time ID
+  let ghostID;
+
+  //*Chase pacman
+  function chasePac() {
+    removeGhost(ghost1Start)
+    if (ghost1Start <= currentPositon && currentPositon >= width) {
+      ghost1Start++
+    }
+    spawnGhost(ghost1Start)
+  }
+
+  setInterval(chasePac, 150)
+
 
   //* Add points
   function addPoints(pos) {
@@ -294,7 +295,7 @@ function init() {
   }
 
   //* Get Local Storage
-  function getLocalStorage(){
+  function getLocalStorage() {
     highScore.innerHTML = localStorage.getItem("pac-man-score")
   }
 
