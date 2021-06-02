@@ -54,7 +54,7 @@ h1 {
   justify-content: center;
 }
 
-i {
+#points {
   font-size: 9px;
   animation: blinker 2s linear infinite;
 }
@@ -63,6 +63,19 @@ i {
   50% {
     opacity: 40%;
   }
+}
+
+.lives-wrapper {
+  display: flex;
+  justify-content: left;
+  margin-top: 20px;
+}
+
+#lives {
+  justify-content: left;
+  color: red;
+  padding: 3px;
+  font-size: 25px;
 }
 
 .pacman-left {

@@ -98,7 +98,7 @@ function init() {
   let score = 0
   const scoreDOM = document.querySelector('.score')
   const highScore = document.querySelector('.high-score')
-  const pointChild = `<i class="fas fa-circle"></i>`
+  const pointChild = `<i id="points" class="fas fa-circle"></i>`
 
 
   //* Movement Control Properties
