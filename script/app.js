@@ -266,16 +266,6 @@ function init() {
     if (ghost1Start <= currentPositon && ghost1Start % width !== width - 1 && !cells[ghost1Start + 1].classList.contains(blockClass)) {
       ghost1Start++
       // Ghost Left
-    } else if (ghost1Start <= currentPositon && ghost1Start % width !== 0 && !cells[ghost1Start - 1].classList.contains(blockClass)) {
-      ghost1Start--
-      // Ghost Up
-    } else if (ghost1Start <= currentPositon && ghost1Start >= width && !cells[ghost1Start - width].classList.contains(blockClass)) {
-      ghost1Start -= width
-      // Ghost Down
-    } else if (ghost1Start <= currentPositon && ghost1Start + width <= width * width - 1 && !cells[ghost1Start + width].classList.contains(blockClass)) {
-      currentPositon += width
-    } else {
-      console.log('Ghost is lost!');
     }
     spawnGhost(ghost1Start)
   }
