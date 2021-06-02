@@ -114,16 +114,36 @@ i {
 }
 
 .ghost1 {
-  background-color: red;
+  /* background-color: red; */
+  background-image: url('../img/placeholder/Ghost/blueGhost.gif');
+  background-size: contain;
+  background-repeat: no-repeat;
+  align-items: center;
+  justify-content: center;
 }
 .ghost2 {
-  background-color: orange;
+  /* background-color: orange; */
+  background-image: url('../img/placeholder/Ghost/redGhost.gif');
+  background-size: contain;
+  background-repeat: no-repeat;
+  align-items: center;
+  justify-content: center;
 }
 .ghost3 {
-  background-color: yellow;
+  /* background-color: yellow; */
+  background-image: url('../img/placeholder/Ghost/pinkGhost.gif');
+  background-size: contain;
+  background-repeat: no-repeat;
+  align-items: center;
+  justify-content: center;
 }
 .ghost4 {
-  background-color: green;
+  /* background-color: green; */
+  background-image: url('../img/placeholder/Ghost/orangeGhost.gif');
+  background-size: contain;
+  background-repeat: no-repeat;
+  align-items: center;
+  justify-content: center;
 }
 
 .block {
