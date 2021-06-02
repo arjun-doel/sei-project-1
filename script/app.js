@@ -124,6 +124,9 @@ function init() {
     spawnGhost(ghost3Start, ghost3)
     spawnGhost(ghost4Start, ghost4)
 
+    //? Ghost Chase
+    // chasePac()
+
     //? Spawn Blocks
     addBlock(blockArray)
 
@@ -173,17 +176,20 @@ function init() {
     cells[position].classList.add(ghost)
   }
 
-  function removeGhost(position) {
-    cells[position].classList.remove(ghost)
-  }
+  // function removeGhost(position) {
+  //   cells[position].classList.remove(ghost)
+  // }
 
   //*Ghost Time ID
   let ghostID;
 
   //*Chase pacman
-  function chasePac(){
-    
-  }
+  // function chasePac(){
+  //   ghostID = setInterval(() => {
+  //     removeGhost(ghost1Start)
+      
+  //   })
+  // }
 
   //! PAC MAN Movement
 
