@@ -276,14 +276,23 @@ function init() {
   //*Chase pacman
   function chasePac() {
     removeGhost(ghost1Start)
-    if (ghost1Start <= currentPositon && currentPositon >= width && !cells[ghost1Start + 1].classList.contains(blockClass)) {
-      ghost1Start++
+    if (ghost1Start <= currentPositon && !cells[ghost1Start + 1].classList.contains(blockClass)) {
+      console.log('hello');
+      }
     }
-    spawnGhost(ghost1Start)
-  }
 
-  setInterval(chasePac, 150)
 
+  // setInterval(chasePac, 150)
+
+  let path = []
+
+  //* Pathfinder
+  const noBlock = cells.forEach(ind => {
+    if (!ind.classList.contains(blockClass)){
+      path.push(ind)
+    }
+  })
+  console.log(path);
   
 
   //* Add points
