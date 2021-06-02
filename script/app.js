@@ -276,7 +276,7 @@ function init() {
   //*Chase pacman
   function chasePac() {
     removeGhost(ghost1Start)
-    if (ghost1Start <= currentPositon && currentPositon >= width) {
+    if (ghost1Start <= currentPositon && currentPositon >= width && !cells[ghost1Start + 1].classList.contains(blockClass)) {
       ghost1Start++
     }
     spawnGhost(ghost1Start)
@@ -284,6 +284,7 @@ function init() {
 
   setInterval(chasePac, 150)
 
+  
 
   //* Add points
   function addPoints(pos) {
