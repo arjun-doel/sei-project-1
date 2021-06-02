@@ -17,7 +17,7 @@ function init() {
   const pacRotDown = 'pacman-down'
 
   //* Ghost Properties
-  const ghost = 'ghost1'
+  const ghost1 = 'ghost1'
   const ghost2 = 'ghost2'
   const ghost3 = 'ghost3'
   const ghost4 = 'ghost4'
@@ -121,10 +121,10 @@ function init() {
     addPac(startPosition, pacRotLeft)
 
     //? Spawn Ghosts
-    spawnGhost(ghost1Start)
-    // spawnGhost(ghost2Start, ghost2)
-    // spawnGhost(ghost3Start, ghost3)
-    // spawnGhost(ghost4Start, ghost4)
+    spawnGhost(ghost1Start, ghost1)
+    spawnGhost(ghost2Start, ghost2)
+    spawnGhost(ghost3Start, ghost3)
+    spawnGhost(ghost4Start, ghost4)
 
     //? Spawn Blocks
     addBlock(blockArray)
@@ -171,12 +171,12 @@ function init() {
   }
 
   //* Add Ghosts Position
-  function spawnGhost(position) {
+  function spawnGhost(position, ghost) {
     cells[position].classList.add(ghost)
   }
 
   function removeGhost(position) {
-    cells[position].classList.remove(ghost)
+    cells[position].classList.remove(ghost1, ghost2, ghost3, ghost4)
   }
 
 
@@ -259,40 +259,59 @@ function init() {
     addPac(currentPositon)
   }
 
-    //* Move Ghost right
-    function ghostRight() {
-      clearInterval(ghostID)
-      ghostID = setInterval(() => {
-        removeGhost(ghost1Start)
-        // && currentPositon +1 !== 357
-        if (ghost1Start % width !== width - 1 && !cells[ghost1Start + 1].classList.contains(blockClass)) {
-          ghost1Start++
-        }
-        spawnGhost(ghost1Start)
-      }, 150)
-    }
+    // //* Move Ghost right
+    // function ghostRight() {
+    //   clearInterval(ghostID)
+    //   ghostID = setInterval(() => {
+    //     removeGhost(ghost1Start)
+    //     // && currentPositon +1 !== 357
+    //     if (ghost1Start % width !== width - 1 && !cells[ghost1Start + 1].classList.contains(blockClass)) {
+    //       ghost1Start++
+    //     }
+    //     spawnGhost(ghost1Start)
+    //   }, 150)
+    // }
   
 
-  //*Chase pacman
-  function chasePac() {
-    removeGhost(ghost1Start)
-    if (ghost1Start <= currentPositon && !cells[ghost1Start + 1].classList.contains(blockClass)) {
-      console.log('hello');
-      }
+  // //*Chase pacman
+  // function chasePac() {
+  //   removeGhost(ghost1Start)
+  //   if (ghost1Start <= currentPositon && !cells[ghost1Start + 1].classList.contains(blockClass)) {
+  //     console.log('hello');
+  //     }
+  //   }
+
+    function ghostMovement(ghostPos, ghost) {
+      const moveOptions = [width, -1, +1, -width]
+      let randomise = moveOptions[(Math.floor(Math.random() * moveOptions.length))]
+      ghostID = setInterval(() => {
+        removeGhost(ghost)
+        if(!cells[ghostPos + randomise].classList.contains(blockClass)){
+          ghostPos += randomise
+        } else {
+          randomise = moveOptions[(Math.floor(Math.random() * moveOptions.length))]
+        }
+        spawnGhost(ghost)
+      }, 130)
     }
+
+    ghostMovement(ghost1Start, ghost1)
+    ghostMovement(ghost2Start, ghost2)
+    // ghostMovement(ghost3Start, ghost3)
+    // ghostMovement(ghost4Start, ghost4)
 
 
   // setInterval(chasePac, 150)
 
-  let path = []
+  // let path = []
 
-  //* Pathfinder
-  const noBlock = cells.forEach(ind => {
-    if (!ind.classList.contains(blockClass)){
-      path.push(ind)
-    }
-  })
-  console.log(path);
+  // //* Pathfinder
+  // const noBlock = cells.forEach(ind => {
+  //   if (!ind.classList.contains(blockClass)){
+  //     path.push(ind)
+  //   }
+  // })
+  // console.log(path);
   
 
   //* Add points
