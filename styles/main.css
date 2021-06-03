@@ -74,6 +74,11 @@ h1 {
   display: none;
   font-family: 'Press Start 2P', cursive;
   font-size: 30px;
+  animation: fadein 1s;
+}
+.game-over h2 {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 30px;
   animation: flash 1s linear infinite;
 }
 
@@ -81,6 +86,11 @@ h1 {
   50% {
     color: goldenrod;
   }
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 .play-again {

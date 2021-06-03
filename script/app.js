@@ -7,6 +7,9 @@ function init() {
   hearts.forEach(ite => {
     heartsArray.push(ite)
   })
+  const gameOverState = document.querySelector('.game-over')
+  const playAgain = document.querySelector('play-again')
+  
 
   //* Grid Properties
   const width = 20
@@ -129,7 +132,7 @@ function init() {
     for (let i = 0; i < cellCount; i++) {
       const cell = document.createElement('div')
       cell.classList.add('cell')
-      cell.innerText = i
+      // cell.innerText = i
       grid.appendChild(cell)
       cells.push(cell)
     }
@@ -373,7 +376,9 @@ function init() {
 
   //* Game Over!
   function gameOver() {
-    
+    grid.style.display = 'none'
+    gameOverState.style.display = 'block'
+    hearts.style.display = 'none'
   }
 
 
