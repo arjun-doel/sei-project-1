@@ -32,6 +32,7 @@ function init() {
   let ghost2Start = 210
   let ghost3Start = 189
   let ghost4Start = 190
+  const moveOptions = [+width, -1, +1, -width]
 
   //*Ghost Time ID
   let ghostID;
@@ -300,7 +301,7 @@ function init() {
   }
 
     function ghostMovement(ghostPos, ghost) {
-      const moveOptions = [+width, -1, +1, -width]
+      
       let randomise = moveOptions[(Math.floor(Math.random() * moveOptions.length))]
       let currentGhostX;
       let currentGhostY;
@@ -363,10 +364,9 @@ function init() {
     //* Take away life
     function takeAwayLife(){
       lives--
-      heartsArray[0].classList.remove('fa-heart')
-      // heartsArray.forEach(heart => {
-      //   heart.shift()
-      // })
+      const randomHeart = Math.floor(Math.random() * heartsArray.length)
+      heartsArray[randomHeart].classList.remove('fa-heart')
+      
     }
 
 
