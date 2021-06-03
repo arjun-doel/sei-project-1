@@ -8,8 +8,9 @@ function init() {
     heartsArray.push(ite)
   })
   const gameOverState = document.querySelector('.game-over')
-  const playAgain = document.querySelector('play-again')
-  
+  const playAgain = document.querySelector('.play-again')
+  const livesWrapper = document.querySelector('.lives-wrapper')
+
 
   //* Grid Properties
   const width = 20
@@ -347,12 +348,15 @@ function init() {
           spawnGhost(ghostPos, ghost)
         }
 
-        if (cells[ghostPos].classList.contains(pacRotLeft) || cells[ghostPos].classList.contains(pacRotRight) || cells[ghostPos].classList.contains(pacRotUp) || cells[ghostPos].classList.contains(pacRotDown)) {
-          takeAwayLife()
-        }
-
       } else {
         randomise = moveOptions[(Math.floor(Math.random() * moveOptions.length))]
+      }
+
+      if (cells[ghostPos].classList.contains(pacRotLeft) || cells[ghostPos].classList.contains(pacRotRight) || cells[ghostPos].classList.contains(pacRotUp) || cells[ghostPos].classList.contains(pacRotDown)) {
+        takeAwayLife()
+        clearInterval(id)
+        removePac(currentPositon)
+        addPac(startPosition, pacRotLeft)
       }
       spawnGhost(ghostPos, ghost)
     }, 200)
@@ -366,6 +370,7 @@ function init() {
 
   //* Take away life
   function takeAwayLife() {
+    
     lives--
     const randomHeart = Math.floor(Math.random() * heartsArray.length)
     heartsArray[randomHeart].classList.remove('fa-heart')
@@ -379,6 +384,14 @@ function init() {
     grid.style.display = 'none'
     gameOverState.style.display = 'block'
     hearts.style.display = 'none'
+    livesWrapper.style.display = 'none'
+
+    clearInterval(ghostID)
+
+    ghost1Start = 209
+    ghost2Start = 210
+    ghost3Start = 189
+    ghost4Start = 190
   }
 
 
