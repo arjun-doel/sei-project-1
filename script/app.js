@@ -2,6 +2,11 @@ function init() {
 
   //* DOM Elements
   const grid = document.querySelector('.grid')
+  const hearts = document.querySelectorAll('#lives')
+  let heartsArray = []
+  hearts.forEach(ite => {
+    heartsArray.push(ite)
+  })
 
   //* Grid Properties
   const width = 20
@@ -15,6 +20,8 @@ function init() {
   const pacRotRight = 'pacman-right'
   const pacRotUp = 'pacman-up'
   const pacRotDown = 'pacman-down'
+  let lives = 3
+
 
   //* Ghost Properties
   const ghost1 = 'ghost1'
@@ -93,12 +100,20 @@ function init() {
 
   ]
 
+  //* Home Property
+  const home = [187, 188, 190, 191, 208, 209, 210, 211]
+  const homeClas = 'home'
+
 
   //* Point Properties
   let score = 0
   const scoreDOM = document.querySelector('.score')
   const highScore = document.querySelector('.high-score')
   const pointChild = `<i id="points" class="fas fa-circle"></i>`
+
+  //* Super Points
+  const superPointsArray = [378, 361, 21, 38]
+  const superPointsChild = `<i id="super-point" class="fas fa-dot-circle"></i>`
 
 
   //* Movement Control Properties
@@ -134,6 +149,12 @@ function init() {
 
     //? Show localStorage
     getLocalStorage()
+
+    //? Spawn Home Class
+    spawnHome(home)
+
+    //? Spawn Super Points
+    superPoints(superPointsArray)
   }
   //* Call grid function, creates grid on DOM 
   createGrid(startPosition)
@@ -156,6 +177,16 @@ function init() {
         ite.innerHTML = pointChild
       }
     })
+  }
+
+  //* Add Home Class
+  function spawnHome(index){
+    index.forEach(ite => cells[ite].classList.add(homeClas))
+  }
+
+  //* Spawn Super Points
+  function superPoints(index){
+    index.forEach(ite => cells[ite].innerHTML = superPointsChild)
   }
 
 
@@ -259,40 +290,68 @@ function init() {
     addPac(currentPositon)
   }
 
-    // //* Move Ghost right
-    // function ghostRight() {
-    //   clearInterval(ghostID)
-    //   ghostID = setInterval(() => {
-    //     removeGhost(ghost1Start)
-    //     // && currentPositon +1 !== 357
-    //     if (ghost1Start % width !== width - 1 && !cells[ghost1Start + 1].classList.contains(blockClass)) {
-    //       ghost1Start++
-    //     }
-    //     spawnGhost(ghost1Start)
-    //   }, 150)
-    // }
-  
 
-  // //*Chase pacman
-  // function chasePac() {
-  //   removeGhost(ghost1Start)
-  //   if (ghost1Start <= currentPositon && !cells[ghost1Start + 1].classList.contains(blockClass)) {
-  //     console.log('hello');
-  //     }
-  //   }
+  function coordinatesX(position){
+    return Math.floor(position / width)
+  }
+
+  function coordinatesY(position){
+    return position % width
+  }
 
     function ghostMovement(ghostPos, ghost) {
-      const moveOptions = [width, -1, +1, -width]
+      const moveOptions = [+width, -1, +1, -width]
       let randomise = moveOptions[(Math.floor(Math.random() * moveOptions.length))]
+      let currentGhostX;
+      let currentGhostY;
+      let ghostX;
+      let ghostY;
+      let pacX;
+      let pacY;
       ghostID = setInterval(() => {
         removeGhost(ghostPos)
         if(!cells[ghostPos + randomise].classList.contains(blockClass) && !cells[ghostPos + randomise].classList.contains(ghost1, ghost2, ghost3, ghost4)){
           ghostPos += randomise
+
+          ghostX = coordinatesX(ghostPos)
+          ghostY = coordinatesY(ghostPos)
+
+          currentGhostX = coordinatesX(ghostPos + randomise)
+          currentGhostY = coordinatesY(ghostPos + randomise)
+
+          pacX = coordinatesX(currentPositon)
+          pacY = coordinatesY(currentPositon)
+
+          function xCompare() {
+            if ((currentGhostX - pacX) > (currentGhostX - pacX)){
+              return true
+            } else {
+              false
+            }
+          }
+
+          function yCompare() {
+            if ((currentGhostY - pacY) > (currentGhostY - pacY)){
+              return true
+            } else {
+              false
+            }
+          }
+
+          if (xCompare() || yCompare()){
+            ghostPos += randomise
+            spawnGhost(ghostPos, ghost)
+          }
+
+          if(cells[ghostPos].classList.contains(pacRotLeft) || cells[ghostPos].classList.contains(pacRotRight) || cells[ghostPos].classList.contains(pacRotUp) || cells[ghostPos].classList.contains(pacRotDown)){
+            takeAwayLife()
+          }
+
         } else {
           randomise = moveOptions[(Math.floor(Math.random() * moveOptions.length))]
         }
         spawnGhost(ghostPos, ghost)
-      }, 170)
+      }, 200)
     }
 
     ghostMovement(ghost1Start, ghost1)
@@ -301,18 +360,16 @@ function init() {
     ghostMovement(ghost4Start, ghost4)
 
 
-  // setInterval(chasePac, 150)
+    //* Take away life
+    function takeAwayLife(){
+      lives--
+      heartsArray[0].classList.remove('fa-heart')
+      // heartsArray.forEach(heart => {
+      //   heart.shift()
+      // })
+    }
 
-  // let path = []
 
-  // //* Pathfinder
-  // const noBlock = cells.forEach(ind => {
-  //   if (!ind.classList.contains(blockClass)){
-  //     path.push(ind)
-  //   }
-  // })
-  // console.log(path);
-  
 
   //* Add points
   function addPoints(pos) {
@@ -321,6 +378,10 @@ function init() {
       score += 10
       scoreDOM.innerHTML = score
       // cells[pos].node.removeChild(pointChild)
+      cells[pos].innerHTML = ''
+    } else if (cells[pos].innerHTML === superPointsChild){
+      score += 100
+      scoreDOM.innerHTML = score
       cells[pos].innerHTML = ''
     }
     addToLocalStorage(score)

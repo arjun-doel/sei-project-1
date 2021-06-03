@@ -59,6 +59,11 @@ h1 {
   animation: blinker 2s linear infinite;
 }
 
+#super-point {
+  color: goldenrod;
+  animation: blinker 1.5s linear infinite;
+}
+
 @keyframes blinker {
   50% {
     opacity: 40%;
@@ -79,6 +84,7 @@ h1 {
 }
 
 .pacman-left {
+  transition: 0.7s;
   background-image: url('../img/placeholder/Pacman-left.gif');
   background-size: contain;
   background-repeat: no-repeat;
@@ -88,6 +94,7 @@ h1 {
 }
 
 .pacman-right {
+  transition: 0.7s;
   background-image: url('../img/placeholder/Pacman-right.gif');
   background-size: contain;
   background-repeat: no-repeat;
@@ -95,6 +102,7 @@ h1 {
   justify-content: center;
 }
 .pacman-up {
+  transition: 0.7s;
   background-image: url('../img/placeholder/Pacman-up.gif');
   background-size: contain;
   background-repeat: no-repeat;
@@ -102,6 +110,7 @@ h1 {
   justify-content: center;
 }
 .pacman-down {
+  transition: 0.7s;
   background-image: url('../img/placeholder/Pacman-down.gif');
   background-size: contain;
   background-repeat: no-repeat;
@@ -163,6 +172,3 @@ h1 {
   background-color: rgba(0, 0, 255, 0.63);
 }
 
-.points {
-  color: red
-}
