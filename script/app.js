@@ -3,10 +3,10 @@ function init() {
   //* DOM Elements
   const grid = document.querySelector('.grid')
   const hearts = document.querySelectorAll('#lives')
-  let heartsArray = []
   const gameOverState = document.querySelector('.game-over')
   const playAgain = document.querySelector('.play-again')
   const livesWrapper = document.querySelector('.lives-wrapper')
+  const liveNum = document.getElementById('live-num')
 
 
   //* Grid Properties
@@ -124,7 +124,7 @@ function init() {
   const up = 38
   const down = 40
 
-  console.log(heartsArray);
+
 
 
   //* Log grid to DOM
@@ -151,9 +151,6 @@ function init() {
     //? Spawn Points
     spawnPoint()
 
-    //? Spawn Hearts
-    addHearts()
-
     //? Show localStorage
     getLocalStorage()
 
@@ -175,15 +172,6 @@ function init() {
   //* Spawn Blocks
   function addBlock(index) {
     index.forEach(ite => cells[ite].classList.add(blockClass))
-  }
-
-  function addHearts(){
-    for (let i = 0; i < lives; i++){
-      const heart = document.createElement('p')
-      heart.innerHTML = '<i id="lives" class="fas fa-heart"></i>'
-      livesWrapper.appendChild(heart)
-      heartsArray.push(heart)
-    }
   }
   
 
@@ -385,8 +373,7 @@ function init() {
   function takeAwayLife() {
     
     lives--
-    const randomHeart = Math.floor(Math.random() * heartsArray.length)
-    heartsArray[randomHeart].classList.remove('fa-heart')
+    liveNum.innerHTML = lives
     if (lives <= 0) {
       gameOver()
     }
@@ -454,7 +441,7 @@ function init() {
     superPoints(superPointsArray)
 
     lives = 3
-
+    liveNum.innerHTML = lives
 
     score = 0
     scoreDOM.innerHTML = score

@@ -120,6 +120,12 @@ h1 {
   font-size: 25px;
 }
 
+#live-num {
+  color: white;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 15px;
+}
+
 .pacman-left {
   transition: 0.7s;
   background-image: url('../img/placeholder/Pacman-left.gif');
