@@ -181,12 +181,12 @@ function init() {
   }
 
   //* Add Home Class
-  function spawnHome(index){
+  function spawnHome(index) {
     index.forEach(ite => cells[ite].classList.add(homeClas))
   }
 
   //* Spawn Super Points
-  function superPoints(index){
+  function superPoints(index) {
     index.forEach(ite => cells[ite].innerHTML = superPointsChild)
   }
 
@@ -292,84 +292,89 @@ function init() {
   }
 
 
-  function coordinatesX(position){
+  function coordinatesX(position) {
     return Math.floor(position / width)
   }
 
-  function coordinatesY(position){
+  function coordinatesY(position) {
     return position % width
   }
 
-    function ghostMovement(ghostPos, ghost) {
-      
-      let randomise = moveOptions[(Math.floor(Math.random() * moveOptions.length))]
-      let currentGhostX;
-      let currentGhostY;
-      let ghostX;
-      let ghostY;
-      let pacX;
-      let pacY;
-      ghostID = setInterval(() => {
-        removeGhost(ghostPos)
-        if(!cells[ghostPos + randomise].classList.contains(blockClass) && !cells[ghostPos + randomise].classList.contains(ghost1, ghost2, ghost3, ghost4)){
-          ghostPos += randomise
+  function ghostMovement(ghostPos, ghost) {
 
-          ghostX = coordinatesX(ghostPos)
-          ghostY = coordinatesY(ghostPos)
+    let randomise = moveOptions[(Math.floor(Math.random() * moveOptions.length))]
+    let currentGhostX;
+    let currentGhostY;
+    let ghostX;
+    let ghostY;
+    let pacX;
+    let pacY;
+    ghostID = setInterval(() => {
+      removeGhost(ghostPos)
+      if (!cells[ghostPos + randomise].classList.contains(blockClass) && !cells[ghostPos + randomise].classList.contains(ghost1, ghost2, ghost3, ghost4)) {
+        ghostPos += randomise
 
-          currentGhostX = coordinatesX(ghostPos + randomise)
-          currentGhostY = coordinatesY(ghostPos + randomise)
+        ghostX = coordinatesX(ghostPos)
+        ghostY = coordinatesY(ghostPos)
 
-          pacX = coordinatesX(currentPositon)
-          pacY = coordinatesY(currentPositon)
+        currentGhostX = coordinatesX(ghostPos + randomise)
+        currentGhostY = coordinatesY(ghostPos + randomise)
 
-          function xCompare() {
-            if ((currentGhostX - pacX) > (currentGhostX - pacX)){
-              return true
-            } else {
-              false
-            }
+        pacX = coordinatesX(currentPositon)
+        pacY = coordinatesY(currentPositon)
+
+        function xCompare() {
+          if ((currentGhostX - pacX) > (currentGhostX - pacX)) {
+            return true
+          } else {
+            false
           }
-
-          function yCompare() {
-            if ((currentGhostY - pacY) > (currentGhostY - pacY)){
-              return true
-            } else {
-              false
-            }
-          }
-
-          if (xCompare() || yCompare()){
-            ghostPos += randomise
-            spawnGhost(ghostPos, ghost)
-          }
-
-          if(cells[ghostPos].classList.contains(pacRotLeft) || cells[ghostPos].classList.contains(pacRotRight) || cells[ghostPos].classList.contains(pacRotUp) || cells[ghostPos].classList.contains(pacRotDown)){
-            takeAwayLife()
-          }
-
-        } else {
-          randomise = moveOptions[(Math.floor(Math.random() * moveOptions.length))]
         }
-        spawnGhost(ghostPos, ghost)
-      }, 200)
-    }
 
-    ghostMovement(ghost1Start, ghost1)
-    ghostMovement(ghost2Start, ghost2)
-    ghostMovement(ghost3Start, ghost3)
-    ghostMovement(ghost4Start, ghost4)
+        function yCompare() {
+          if ((currentGhostY - pacY) > (currentGhostY - pacY)) {
+            return true
+          } else {
+            false
+          }
+        }
 
+        if (xCompare() || yCompare()) {
+          ghostPos += randomise
+          spawnGhost(ghostPos, ghost)
+        }
 
-    //* Take away life
-    function takeAwayLife(){
-      lives--
-      const randomHeart = Math.floor(Math.random() * heartsArray.length)
-      heartsArray[randomHeart].classList.remove('fa-heart')
-      if (lives <= 0){
-        gameOver()
+        if (cells[ghostPos].classList.contains(pacRotLeft) || cells[ghostPos].classList.contains(pacRotRight) || cells[ghostPos].classList.contains(pacRotUp) || cells[ghostPos].classList.contains(pacRotDown)) {
+          takeAwayLife()
+        }
+
+      } else {
+        randomise = moveOptions[(Math.floor(Math.random() * moveOptions.length))]
       }
+      spawnGhost(ghostPos, ghost)
+    }, 200)
+  }
+
+  ghostMovement(ghost1Start, ghost1)
+  ghostMovement(ghost2Start, ghost2)
+  ghostMovement(ghost3Start, ghost3)
+  ghostMovement(ghost4Start, ghost4)
+
+
+  //* Take away life
+  function takeAwayLife() {
+    lives--
+    const randomHeart = Math.floor(Math.random() * heartsArray.length)
+    heartsArray[randomHeart].classList.remove('fa-heart')
+    if (lives <= 0) {
+      gameOver()
     }
+  }
+
+  //* Game Over!
+  function gameOver() {
+    
+  }
 
 
 
@@ -381,7 +386,7 @@ function init() {
       scoreDOM.innerHTML = score
       // cells[pos].node.removeChild(pointChild)
       cells[pos].innerHTML = ''
-    } else if (cells[pos].innerHTML === superPointsChild){
+    } else if (cells[pos].innerHTML === superPointsChild) {
       score += 100
       scoreDOM.innerHTML = score
       cells[pos].innerHTML = ''

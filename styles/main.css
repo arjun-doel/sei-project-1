@@ -70,6 +70,33 @@ h1 {
   }
 }
 
+.game-over {
+  display: none;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 30px;
+  animation: flash 1s linear infinite;
+}
+
+@keyframes flash {
+  50% {
+    color: goldenrod;
+  }
+}
+
+.play-again {
+  border: none;
+  background-color: aquamarine;
+  padding: 30px;
+  font-family: 'Press Start 2P', cursive;
+  margin-top: 20px;
+  border-radius: 8px;
+}
+
+.play-again:hover {
+  background-color: rgb(94, 189, 157);
+}
+
+
 .lives-wrapper {
   display: flex;
   justify-content: left;
