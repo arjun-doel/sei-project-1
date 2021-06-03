@@ -366,7 +366,9 @@ function init() {
       lives--
       const randomHeart = Math.floor(Math.random() * heartsArray.length)
       heartsArray[randomHeart].classList.remove('fa-heart')
-
+      if (lives <= 0){
+        gameOver()
+      }
     }
 
 
