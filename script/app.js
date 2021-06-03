@@ -366,7 +366,7 @@ function init() {
       lives--
       const randomHeart = Math.floor(Math.random() * heartsArray.length)
       heartsArray[randomHeart].classList.remove('fa-heart')
-      
+
     }
 
 
@@ -409,7 +409,6 @@ function init() {
 
 
   document.addEventListener('keydown', movement)
-
 
 
 
