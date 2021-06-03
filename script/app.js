@@ -39,7 +39,7 @@ function init() {
   const moveOptions = [+width, -1, +1, -width]
 
   //*Ghost Time ID
-  let ghostID;
+  let ghostID = null
 
   //* Block Properties
   const blockClass = 'block'
@@ -152,6 +152,9 @@ function init() {
     //? Spawn Points
     spawnPoint()
 
+    //? Spawn Hearts
+    addHearts()
+
     //? Show localStorage
     getLocalStorage()
 
@@ -173,6 +176,14 @@ function init() {
   //* Spawn Blocks
   function addBlock(index) {
     index.forEach(ite => cells[ite].classList.add(blockClass))
+  }
+
+  function addHearts(){
+    for (let i = 0; i < lives; i++){
+      const heart = document.createElement('p')
+      heart.innerHTML = '<i id="lives" class="fas fa-heart"></i>'
+      livesWrapper.appendChild(heart)
+    }
   }
 
   //* Spawn Points
@@ -356,7 +367,8 @@ function init() {
         takeAwayLife()
         clearInterval(id)
         removePac(currentPositon)
-        addPac(startPosition, pacRotLeft)
+        currentPositon = 251
+        addPac(currentPositon, pacRotLeft)
       }
       spawnGhost(ghostPos, ghost)
     }, 200)
@@ -383,10 +395,10 @@ function init() {
   function gameOver() {
     grid.style.display = 'none'
     gameOverState.style.display = 'block'
-    hearts.style.display = 'none'
     livesWrapper.style.display = 'none'
 
     clearInterval(ghostID)
+
 
     ghost1Start = 209
     ghost2Start = 210
@@ -429,12 +441,29 @@ function init() {
   }
 
 
+  //* Start Game 
+  function startGame(e){
+    console.log('clicked');
+    grid.style.display = 'flex'
+    gameOverState.style.display = 'none'
+    livesWrapper.style.display = 'flex'
+
+
+    spawnPoint()
+    superPoints(superPointsArray)
+
+    lives = 3
+
+
+    score = 0
+    scoreDOM.innerHTML = score
+  }
 
 
 
 
   document.addEventListener('keydown', movement)
-
+  playAgain.addEventListener('click', startGame)
 
 
 
