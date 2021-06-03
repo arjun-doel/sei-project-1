@@ -110,7 +110,7 @@ h1 {
 .lives-wrapper {
   display: flex;
   justify-content: left;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 #lives {

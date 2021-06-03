@@ -4,9 +4,6 @@ function init() {
   const grid = document.querySelector('.grid')
   const hearts = document.querySelectorAll('#lives')
   let heartsArray = []
-  hearts.forEach(ite => {
-    heartsArray.push(ite)
-  })
   const gameOverState = document.querySelector('.game-over')
   const playAgain = document.querySelector('.play-again')
   const livesWrapper = document.querySelector('.lives-wrapper')
@@ -65,7 +62,7 @@ function init() {
     // Bottom Left blocks
     297, 317, 337, 357,
     // Box
-    167, 168, 171, 172,
+    167, 172,
     // Box Left Edge
     187, 207, 227,
     // Box Bottom
@@ -127,6 +124,8 @@ function init() {
   const up = 38
   const down = 40
 
+  console.log(heartsArray);
+
 
   //* Log grid to DOM
   function createGrid(startPosition) {
@@ -183,8 +182,10 @@ function init() {
       const heart = document.createElement('p')
       heart.innerHTML = '<i id="lives" class="fas fa-heart"></i>'
       livesWrapper.appendChild(heart)
+      heartsArray.push(heart)
     }
   }
+  
 
   //* Spawn Points
   function spawnPoint() {
