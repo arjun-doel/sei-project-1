@@ -2,7 +2,7 @@ function init() {
 
   //* DOM Elements
   const grid = document.querySelector('.grid')
-  const hearts = document.querySelectorAll('#lives')
+  // const hearts = document.querySelectorAll('#lives')
   const gameOverState = document.querySelector('.game-over')
   const playAgain = document.querySelector('.play-again')
   const livesWrapper = document.querySelector('.lives-wrapper')
@@ -164,7 +164,7 @@ function init() {
     superPoints(superPointsArray)
   }
   //* Call grid function, creates grid on DOM 
-  createGrid(startPosition)
+  // createGrid(startPosition)
 
 
 
@@ -435,17 +435,19 @@ function init() {
     gameOverState.style.display = 'none'
     livesWrapper.style.display = 'flex'
     start.style.display = 'none'
-    // clearInterval(ghostID)
+    clearInterval(ghostID)
+
+    
 
     removeGhost(ghost1Start)
     removeGhost(ghost2Start)
     removeGhost(ghost3Start)
     removeGhost(ghost4Start)
 
-    spawnGhost(ghost1Start, ghost1)
-    spawnGhost(ghost2Start, ghost2)
-    spawnGhost(ghost3Start, ghost3)
-    spawnGhost(ghost4Start, ghost4)
+    // spawnGhost(ghost1Start, ghost1)
+    // spawnGhost(ghost2Start, ghost2)
+    // spawnGhost(ghost3Start, ghost3)
+    // spawnGhost(ghost4Start, ghost4)
 
     
 
@@ -474,8 +476,7 @@ function init() {
   document.addEventListener('keydown', movement)
   playAgain.addEventListener('click', startGame)
   start.addEventListener('click', startGame)
-
-
+  createGrid(startPosition)
 
 
 
