@@ -8,6 +8,7 @@ function init() {
   const livesWrapper = document.querySelector('.lives-wrapper')
   const liveNum = document.getElementById('live-num')
   const start = document.getElementById('start')
+  const winLose = document.querySelector('.win-lose')
 
 
   //* Grid Properties
@@ -296,6 +297,7 @@ function init() {
       console.log('Wrong Key!');
     }
     addPac(currentPositon)
+
   }
 
 
@@ -384,20 +386,34 @@ function init() {
     grid.style.display = 'none'
     gameOverState.style.display = 'block'
     livesWrapper.style.display = 'none'
-
+    winLose.innerHTML = 'Game Over!'
     clearInterval(ghostID)
     removeGhost(ghost1Start)
     removeGhost(ghost2Start)
     removeGhost(ghost3Start)
     removeGhost(ghost4Start)
+    
+  }
 
+  //* Win Game
+  function winGame(){
+    grid.style.display = 'none'
+    gameOverState.style.display = 'block'
+    livesWrapper.style.display = 'none'
+    winLose.innerHTML = 'You Win!'
+    clearInterval(id)
+    clearInterval(ghostID)
+    removeGhost(ghost1Start)
+    removeGhost(ghost2Start)
+    removeGhost(ghost3Start)
+    removeGhost(ghost4Start)
   }
 
 
 
   //* Add points
   function addPoints(pos) {
-    const i = document.querySelectorAll('i')
+    // const i = document.querySelectorAll('i')
     if (cells[pos].innerHTML === pointChild) {
       score += 10
       scoreDOM.innerHTML = score
@@ -409,6 +425,10 @@ function init() {
       cells[pos].innerHTML = ''
     }
     addToLocalStorage(score)
+    
+    if (score >= 2300){
+      winGame()
+    }
   }
 
   //* Set Local Storage
@@ -427,6 +447,8 @@ function init() {
     highScore.innerHTML = localStorage.getItem("pac-man-score")
   }
 
+
+  
 
   //* Start Game 
   function startGame(e){
@@ -470,6 +492,8 @@ function init() {
     scoreDOM.innerHTML = score
   }
 
+
+  
 
 
 
