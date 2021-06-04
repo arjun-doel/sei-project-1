@@ -7,6 +7,7 @@ function init() {
   const playAgain = document.querySelector('.play-again')
   const livesWrapper = document.querySelector('.lives-wrapper')
   const liveNum = document.getElementById('live-num')
+  const start = document.getElementById('start')
 
 
   //* Grid Properties
@@ -363,10 +364,7 @@ function init() {
     }, 200)
   }
 
-  ghostMovement(ghost1Start, ghost1)
-  ghostMovement(ghost2Start, ghost2)
-  ghostMovement(ghost3Start, ghost3)
-  ghostMovement(ghost4Start, ghost4)
+  
 
 
   //* Take away life
@@ -386,12 +384,11 @@ function init() {
     livesWrapper.style.display = 'none'
 
     clearInterval(ghostID)
+    removeGhost(ghost1Start)
+    removeGhost(ghost2Start)
+    removeGhost(ghost3Start)
+    removeGhost(ghost4Start)
 
-
-    ghost1Start = 209
-    ghost2Start = 210
-    ghost3Start = 189
-    ghost4Start = 190
   }
 
 
@@ -435,6 +432,28 @@ function init() {
     grid.style.display = 'flex'
     gameOverState.style.display = 'none'
     livesWrapper.style.display = 'flex'
+    start.style.display = 'none'
+    // clearInterval(ghostID)
+
+    removeGhost(ghost1Start)
+    removeGhost(ghost2Start)
+    removeGhost(ghost3Start)
+    removeGhost(ghost4Start)
+
+    spawnGhost(ghost1Start, ghost1)
+    spawnGhost(ghost2Start, ghost2)
+    spawnGhost(ghost3Start, ghost3)
+    spawnGhost(ghost4Start, ghost4)
+
+    
+
+
+    
+
+    ghostMovement(ghost1Start, ghost1)
+    ghostMovement(ghost2Start, ghost2)
+    ghostMovement(ghost3Start, ghost3)
+    ghostMovement(ghost4Start, ghost4)
 
 
     spawnPoint()
@@ -452,6 +471,7 @@ function init() {
 
   document.addEventListener('keydown', movement)
   playAgain.addEventListener('click', startGame)
+  start.addEventListener('click', startGame)
 
 
 

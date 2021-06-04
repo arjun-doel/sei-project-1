@@ -70,6 +70,25 @@ h1 {
   }
 }
 
+.play {
+  margin-top: 20px;
+}
+
+#start {
+  border: none;
+  background-color: aquamarine;
+  padding: 30px;
+  font-family: 'Press Start 2P', cursive;
+  margin-top: 20px;
+  border-radius: 8px;
+}
+
+#start:hover {
+  background-color: rgb(111, 222, 185);
+  color: goldenrod;
+}
+
+
 .game-over {
   display: none;
   font-family: 'Press Start 2P', cursive;
