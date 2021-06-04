@@ -452,6 +452,7 @@ function init() {
 
   //* Start Game 
   function startGame(e){
+    document.addEventListener('keydown', movement)
     console.log('clicked');
     grid.style.display = 'flex'
     gameOverState.style.display = 'none'
@@ -497,7 +498,7 @@ function init() {
 
 
 
-  document.addEventListener('keydown', movement)
+  
   playAgain.addEventListener('click', startGame)
   start.addEventListener('click', startGame)
   createGrid(startPosition)
